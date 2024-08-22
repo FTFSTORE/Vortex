@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Login Vortex</title>
+</head>
+<body>
+    
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Faça Login <br>E acesse nossa plataforma.</h1>
+            <img src="login-img.svg" alt="Login Image">
+        </div>
+    
+        <div class="right-login">
+            <div class="card-login">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" id="usuario" placeholder="Usuário" required>
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Senha" required>
+                </div>
+                <button class="btn-login" onclick="login()">Login</button>
+                <p id="login-error" style="color: red; display: none;">Usuário ou senha inválidos!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <button class="cadastro" onclick="PageC()">Cadastre-se</button>
+    
+    <script>
+        // Função para redirecionar para a página de cadastro
+        function PageC() {
+            document.querySelector('.modal').style.display = 'flex';
+            setTimeout(function() {
+                document.querySelector('.modal').style.display = 'none';
+                window.location.href = "signup.html";
+            }, 2500);
+        }
+
+        // Função para realizar o login
+        function login() {
+            const username = document.getElementById('usuario').value;
+            const password = document.getElementById('senha').value;
+            const errorElement = document.getElementById('login-error');
+
+            // Mostrar modal de carregamento
+            document.querySelector('.modal').style.display = 'flex';
+
+            setTimeout(function() {
+                // Verifica as credenciais do usuário
+                const user = JSON.parse(localStorage.getItem('user'));
+                if (user && user.username === username && user.password === password) {
+                    localStorage.setItem('loggedIn', 'true'); // Salva o estado de login
+                    localStorage.setItem('loggedUser', username); // Salva o nome de usuário
+                    document.querySelector('.modal').style.display = 'none';
+                    window.location.href = './assets/home.html'; // Redireciona para a página de boas-vindas
+                } else {
+                    errorElement.textContent = 'Usuário ou senha inválidos!';
+                    errorElement.style.display = 'block';
+                    document.querySelector('.modal').style.display = 'none';
+                }
+            }, 2000); // Simula o tempo de processamento
+        }
+    </script>
+    
+</body>
+</html>

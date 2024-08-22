@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <title>Home Vortex</title>
+</head>
+<body>
+    
+    <div class="menu">
+
+        <div class="left">
+            <span id="user-initial"></span>
+            <span id="user-name"></span>
+        </div>
+
+        <div class="center">
+            <li>
+                <a href="home.html">
+                    <span class="icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><i class="fa-regular fa-address-card"></i></span>
+                    <span class="text">About</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><i class="fa-solid fa-satellite"></i></i></span>
+                    <span class="text">Services</span>
+                </a>
+            </li>
+        </div>
+
+        <div class="right">
+            <a href="" id="Register-Company">
+                <span class="icon"><i class="fa-solid fa-building"></i></span>
+                <span class="text">Register Company</span>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        // Verifica se o usuário está logado
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = '../'; // Redireciona para a página de login se não estiver logado
+        }
+
+        // Obtém a primeira letra do nome de usuário
+        const username = localStorage.getItem('loggedUser');
+        if (username) {
+            document.getElementById('user-initial').textContent = username.charAt(0).toUpperCase();
+            document.getElementById('user-name').textContent = username
+        }
+
+        // Função para realizar o logout
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('loggedUser');
+            window.location.href = '../'; // Redireciona para a página de login
+        }
+
+        document.getElementById('Register-Company').addEventListener('click', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            document.querySelector('.modal').style.display = 'flex'; // Exemplo de exibição de um modal
+            setTimeout(function() {
+            // Exemplo de ação: redirecionar para uma página de registro
+            window.location.href = 'register-company.html';
+            }, 3500)
+
+
+        });
+    </script>
+</body>
+</html>
