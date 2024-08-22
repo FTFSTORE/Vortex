@@ -104,6 +104,30 @@ body * {
     font-size: 24px;
 }
 
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Esconde o modal inicialmente */
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+
+.modal-content {
+    background: #151e26;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: pulse 1.5s infinite;
+}
+
 /* Estilo geral para a página de erro */
 .error-page {
     display: flex;
@@ -154,30 +178,6 @@ body * {
 
 .error-button:hover {
     background-color: #4270cb;
-}
-
-.modal{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none; /* Esconde o modal inicialmente */
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-}
-
-
-.modal-content {
-    background: #151e26;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
