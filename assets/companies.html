@@ -35,12 +35,12 @@
             </li>
             <li>
                 <a href="">
-                    <span class="icon"><i class="fa-solid fa-satellite"></i></span>
+                    <span class="icon"><i class="fa-solid fa-satellite"></i></i></span>
                     <span class="text">Services</span>
                 </a>
             </li>
             <li>
-                <a href="companies.html">
+                <a href="companies.html" class="active">
                     <span class="icon"><i class="fa-solid fa-building"></i></span>
                     <span class="text">Companies</span>
                 </a>
@@ -56,54 +56,41 @@
 
     </div>
 
-    <div class="register">
-        <div class="card-register">
-            <h1>Company</h1>
-            <div class="textfield">
-                <label for="name">Name Company</label>
-                <input type="text" id="name" placeholder="Name Company" required>
-            </div>
-            <div class="textfield">
-                <label for="email">Email Company</label>
-                <input type="text" id="email" placeholder="Email Company" required>
-            </div>
-            <div class="textfield">
-                <label for="senha">PassWord Company</label>
-                <input type="password" id="senha" placeholder="PassWord Company" required>
-            </div>
-            <div class="textfield">
-                <label for="image">Logo Company</label>
-                <input type="file" id="image" class="file-upload-input" accept="image/*" required>
-                <img id="preview" class="preview" alt="">
-            </div>         
-            <button class="btn-register"  onclick="registerCompany()">Register</button>
-        </div>
-    </div>
-
     <div class="modal" style="display: none;">
         <div class="modal-content">
             <div class="spinner"></div>
         </div>
     </div>
 
+    <div class="companys"></div>
+
     <script>
+        // Função para carregar e exibir os dados das empresas
+        function loadCompanies() {
+            const companies = JSON.parse(localStorage.getItem('companies')) || [];
+            const companysContainer = document.querySelector('.companys');
 
-        document.getElementById('image').addEventListener('change', function(event) {
-                    const file = event.target.files[0];
-                    const preview = document.getElementById('preview');
+            companies.forEach(company => {
+                const companyDiv = document.createElement('div');
+                companyDiv.className = 'company';
 
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            preview.src = e.target.result;
-                        };
-                        reader.readAsDataURL(file);
-                    } else {
-                        preview.src = '';
-                    }
-                });
-        // Verifica se o usuário está logado
-        if (localStorage.getItem('loggedIn') !== 'true') {
+                companyDiv.innerHTML = `
+                    <img src="${company.image}" alt="Company Logo">
+                    <div class="text">
+                        <h2>${company.name}</h2>
+                        <p>${company.email}</p>
+                    </div>
+                `;
+
+                companysContainer.appendChild(companyDiv);
+            });
+        }
+
+        // Carrega as empresas quando a página é carregada
+        window.onload = loadCompanies;
+
+         // Verifica se o usuário está logado
+         if (localStorage.getItem('loggedIn') !== 'true') {
             window.location.href = '../'; // Redireciona para a página de login se não estiver logado
         }
 
@@ -131,37 +118,6 @@
 
 
         });
-
-        // Função para salvar os dados no localStorage e redirecionar
-        function registerCompany() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('senha').value;
-            const image = document.getElementById('image').files[0];
-
-            if (name && email && password && image) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const companyData = {
-                        name: name,
-                        email: email,
-                        password: password,
-                        image: e.target.result
-                    };
-
-                    // Adiciona a empresa ao localStorage
-                    let companies = JSON.parse(localStorage.getItem('companies')) || [];
-                    companies.push(companyData);
-                    localStorage.setItem('companies', JSON.stringify(companies));
-
-                    // Redireciona para a página de visualização
-                    window.location.href = 'companies.html';
-                };
-                reader.readAsDataURL(image);
-            } else {
-                alert('Please fill all fields and select an image.');
-            }
-        }
     </script>
 </body>
 </html>

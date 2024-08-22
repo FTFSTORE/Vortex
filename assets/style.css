@@ -4,6 +4,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #0A0F13;
+    overflow-x: hidden;
 }
 
 body * {
@@ -180,6 +181,168 @@ body * {
     background-color: #4270cb;
 }
 
+.register {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-register {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background-color: #0e141a;
+
+
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #00000063;
+}
+
+.card-register > h1 {
+    color: #4d7ee1;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textfield {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+.textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #151e26;
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0 10px 40px #00000063;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield > input::placeholder {
+    color: #f0ffff94;
+}
+
+.textfield > label {
+    color: #f0ffffde;
+    margin-bottom: 10px;
+}
+
+/* Modificando a cor do botão (não suportado em todos os navegadores) */
+input[type="file"]::-webkit-file-upload-button {
+    background: #0e141a; /* Cor de fundo verde */
+    border: 2px dashed #f0fffff6;
+    color: #f0fffff6;
+    padding: 10px 15px;
+    margin-right: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Alterar a cor do botão no Firefox */
+input[type="file"]::-moz-file-upload {
+    background: #0A0F13; /* Cor de fundo verde */
+    border: 2px dashed #f0fffff6;
+    color: #f0fffff6;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.preview {
+    margin-top: 10px;
+    max-width: 90px;
+    max-height: 90px;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    outline: none;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #0e1625;
+    background-color: #5084eb;
+    cursor: pointer;
+    box-shadow: 0 10px 40px -12px #3b63b3a1;
+}
+
+.companys {
+    background-color: #0e141a;
+    padding: 20px;
+    margin: 50px auto; /* Centraliza horizontalmente */
+    border-radius: 10px;
+    width: 90%; /* Ajusta a largura para ficar mais harmônico */
+    max-width: 1200px; /* Define uma largura máxima para evitar que fique muito largo */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ajusta automaticamente a quantidade de colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+.company {
+    background-color: #12181e;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f0ffffde;
+    transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição suave */
+}
+
+.company:hover {
+    transform: scale(1.05); /* Aumenta o tamanho quando o mouse passa por cima */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Adiciona sombra quando o mouse passa por cima */
+}
+
+.company img {
+    width: 100%;
+    max-width: 200px; /* Define uma largura máxima para a imagem */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover; /* Garante que a imagem cubra o espaço disponível sem distorção */
+    margin-bottom: 15px; /* Espaço abaixo da imagem */
+}
+
+.company .text {
+    text-align: center; /* Centraliza o texto */
+}
+
+.company .text h2 {
+    font-size: 1.5em; /* Tamanho do título */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+}
+
+.company .text p {
+    font-size: 1em; /* Tamanho do texto */
+    color: #c0c0c0; /* Cor do texto */
+}
+
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -287,5 +450,11 @@ body * {
 
     #Register-Company {
         right: 0;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .menu .center {
+        font-size: 78%;
     }
 }
