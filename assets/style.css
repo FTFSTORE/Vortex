@@ -78,7 +78,6 @@ body * {
 #Register-Company {
     color: #0e141a;
     text-decoration: none;
-    position: fixed; /* Muda a posição para fixa */
     right: 5px; /* Define a distância do lado direito */
     display: flex;
     align-items: center;
