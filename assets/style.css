@@ -426,6 +426,10 @@ input[type="file"]::-moz-file-upload {
     .card-register {
         width: 80%;
     }
+
+    .spinner {
+        border: 4px dashed #5084eb;
+    }
 }
 
 @media only screen and (max-width: 650px) {
