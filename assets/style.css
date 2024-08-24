@@ -78,8 +78,8 @@ body * {
 #Register-Company {
     color: #0e141a;
     text-decoration: none;
-    position: relative;
-    margin: 0 10px;
+    position: fixed; /* Muda a posição para fixa */
+    right: 5px; /* Define a distância do lado direito */
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -91,9 +91,8 @@ body * {
     box-shadow: 0 10px 40px -12px #3b63b3a1;
     border: 2px dashed #fff0;
     font-weight: 600;
-    right: -350px;
-    box-sizing: border-box;
 }
+
 
 .menu #Register-Company:hover {
     border: 2px dashed #0e141a;
@@ -418,43 +417,39 @@ input[type="file"]::-moz-file-upload {
     color: #f0ffffde;
 }
 
-@media only screen and (max-width: 1435px) {
-    #Register-Company {
-        right: -250px;
-    }
-}
-
-@media only screen and (max-width: 1320px) {
-    #Register-Company {
-        right: -210px;
-    }
-}
-
-@media only screen and (max-width: 1203px) {
-    #Register-Company {
-        right: -200px;
-    }
-}
-
-@media only screen and (max-width: 1163px) {
-    #Register-Company {
-        right: -120px;
-    }
-}
-
 @media only screen and (max-width: 950px) { 
     .menu {
         flex-direction: column;
         gap: 1rem;
     }
 
-    #Register-Company {
-        right: 0;
+
+    .card-register {
+        width: 80%;
     }
 }
 
 @media only screen and (max-width: 650px) {
-    .menu .center {
-        font-size: 78%;
+    .menu {
+        height: 220px;
+    }
+
+    .menu .center a{
+        padding: 10px;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .menu .center a span.text {
+        font-size: .7rem;
+    }
+
+    .card-register {
+        width: 80%;
+    }
+
+    #Register-Company {
+        right: 112px;
+        top: 165px;
     }
 }
